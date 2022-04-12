@@ -1,0 +1,44 @@
+#!/bin/bash
+# gitfreshbranch
+
+while test $# -gt 0; do
+  case "$1" in
+    *|-h|--help)
+        echo "Git fresh branch - attempt to capture arguments"
+        echo " "
+        echo "gitfreshbranch [options] application [arguments]"
+        echo " "
+        echo "options:"
+        echo "-sb, --source-branch          [required] Define the branch to apply fresh start"
+        echo "-rb, --reference-branch       [required] Define the branch from source branch will recreated"
+        echo "-cb, --clean-branch           [optional] Define new branch with a clean history."
+        echo "                                         Default: same name of source branch"
+        echo "-p, --patch                   [optional] Define filename of git patch"
+        echo "-t, --temp                    [optional] Define temp dir where to save git patch"
+        exit 0
+        ;;
+    -sb|--source-branch)
+        shift
+        echo "source branch" 
+        shift
+        ;;
+    --action*)
+      export PROCESS=`echo $1 | sed -e 's/^[^=]*=//g'`
+      shift
+      ;;
+    -o)
+      shift
+      if test $# -gt 0; then
+        export OUTPUT=$1
+      else
+        echo "no output dir specified"
+        exit 1
+      fi
+      shift
+      ;;
+    --output-dir*)
+      export OUTPUT=`echo $1 | sed -e 's/^[^=]*=//g'`
+      shift
+      ;;
+  esac
+done
