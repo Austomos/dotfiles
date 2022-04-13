@@ -1,10 +1,3 @@
-# set DISPLAY variable to the IP automatically assigned to WSL2
-# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-# sudo /etc/init.d/dbus start &> /dev/null
-
-Xvfb :1 -screen 0 1280x800x24 & 
-export DISPLAY=:1
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
