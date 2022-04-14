@@ -12,14 +12,6 @@ alias cdapi-doc='cd ~/Projects/api-documentation'
 
 alias start_intra-spa='cd ~/Projects/intranet-spa && npm start'
 
-# git
-alias gitpullpprod='git switch pprod && git pull origin pprod'
-alias gitpulldev='git switch dev && git pull origin dev'
-alias gitpush='git push origin HEAD'
-alias gitpull='git pull origin'
-alias gitsc='git switch -c'
-alias gits='git switch'
-
 alias bfg='java -jar ~/bfg-1.14.0.jar'
 
 # ssh
@@ -33,7 +25,6 @@ alias cdmc-app='cd ~/perso/mychastity.app'
 alias cdmc-chaster='cd ~/perso/mychastity.chaster-app-php'
 alias cdmc-finage='cd ~/perso/mychastity.finage-php'
 alias cdbeck='cd ~/Projects/beck-columns'
-alias cdslaveous='cd /mnt/c/Users/bh/perso/Slaveous'
 
 # aertec
 alias cdaertec='cd ~/Projects/Aertec'

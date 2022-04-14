@@ -10,6 +10,7 @@ mkdir $DOTFILES_DIR
 # Symlink
 ln -s $DOTFILES_DIR/.profile ~/.profile
 ln -s $DOTFILES_DIR/zsh/.zshrc ~/.zshrc
+sudo ln -s $DOTFILES_DIR/bin/* /usr/local/bin/
 
 # zsh and oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
