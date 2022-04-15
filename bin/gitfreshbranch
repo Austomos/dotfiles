@@ -2,10 +2,12 @@
 # gitfreshbranch
 # https://about.gitlab.com/blog/2018/06/07/keeping-git-commit-history-clean/#situation-4-my-git-commit-history-doesnt-make-sense-i-need-a-fresh-start
 
+# Standard message
 HELP="\033[1;34mUse -h for help\033[0m"
 ERROR="\033[1;31mError!\033[0m"
 WARNING="\033[0;33mWarning!\033[0m"
 
+# Default values from arguments
 while test $# -gt 0; do
   case "$1" in
     -h|--help)
@@ -15,9 +17,9 @@ while test $# -gt 0; do
         echo "gitfreshbranch [options] application [arguments]"
         echo " "
         echo "options:"
-        echo "-sb, --source-branch          [required] Define the branch to apply fresh start"
-        echo "-rb, --reference-branch       [required] Define the base branch from which the source branch will be recreated"
-        echo "-cb, --clean-branch           [optional] Define new branch with a clean history."
+        echo "-sb, --source-branch          \033[1;34m[required]\033[0m Define the branch to perform a fresh start"
+        echo "-rb, --reference-branch       \033[1;34m[required]\033[0m Define the base branch from which the source branch will be recreated"
+        echo "-cb, --clean-branch           [optional] Define name of the new branch with a clean history"
         echo "                                         Default: same name of source branch"
         echo " "
         echo "More information here:"
@@ -39,12 +41,18 @@ while test $# -gt 0; do
       cb=$1
       shift 2> /dev/null
       ;;
+    -v|--verbose)
+      shift 2> /dev/null
+      verbose=true
+      shift 2> /dev/null
+      ;;
     *)
       shift 2> /dev/null
       ;;
   esac
 done
 
+# Check if it's a git repository
 if ! git status &>/dev/null; then
   echo "$ERROR\nThere is no sign of git anywhere in the current directory\nPlease run this script from a git repository"
   echo ""
@@ -52,25 +60,47 @@ if ! git status &>/dev/null; then
   exit 0
 fi
 
+# Check if all required arguments are set
 [[ -z "$sb" ]] && echo "$WARNING Missing the branch to apply fresh start. \n$HELP" && exit 0
 [[ -z "$rb" ]] && echo "$WARNING Missing the base branch from which the source branch will be recreated. \n$HELP" && exit 0
 [[ -z "$cb" ]] && cb=$sb
 
-# clean patch var of forbidden characters: /
+# Clean patch filename of forbidden characters: /
 patch=$(echo "$sb.patch" | sed -r 's/[//]+/_/g')
-
+# Create a temporary directory
 temp=$(mktemp -d)
+# Create a temporary file
 patchfile="$temp/$patch"
 
-git switch $sb 2> /dev/null || echo "$ERROR git switch $sb failed" && rm -r $temp && exit 0
-git merge $rb 2> /dev/null || echo "$ERROR git merge $rb failed" && rm -r $temp && exit 0
-git diff $rb $sb > $patchfile 2> /dev/null || echo "$ERROR git diff $rb $sb > $patchfile failed" && rm -r $temp && exit 0
-git switch $rb 2> /dev/null || echo "$ERROR git switch $rb failed" && rm -r $temp && exit 0
+# Function to handle verbose error from git commands
+handle_git_error () {
+  local gitcmd="\033[1;34m$2\033[0m"
+  local fail="\033[0;33mfailed\033[0m"
+  echo "$ERROR"
+  if [[ $1 == true ]]; then
+    echo "$gitcmd $fail with error: $(sed 's/*//')"
+  else
+    echo "$gitcmd $fail"
+  fi
+  rm -r $temp
+  exit 0
+}
 
-[[ "$sb" == "$cb" ]]  && git branch -D $sb 2> /dev/null || echo "$ERROR git branch -D $sb failed" && rm -r $temp && exit 0
+# Handle git commands
+git_command () {
+  (eval "git $@" 1> /dev/null ) 9>&2  2>&1 | handle_git_error "$verbose" "git $@"
+}
 
-git switch -c $cb 2> /dev/null || echo "$ERROR git switch -c $cb failed" && rm -r $temp && exit 0
-git apply $patchfile 2> /dev/null || echo "$ERROR git apply $patchfile failed"
+# Git commands
+[[ $(git branch --show-current) != $sb ]] && git_command switch $sb
+git_command merge $rb
+git_command diff $rb $sb > $patchfile
+git_command switch $rb
+[[ "$sb" == "$cb" ]]  && git_command branch -D $sb
+git_command switch -c $cb
+git_command apply $patchfile
 
+# Remove temp dir
 rm -r $temp
+
 exit 1
