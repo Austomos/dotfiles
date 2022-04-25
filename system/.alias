@@ -6,17 +6,19 @@ alias cdf-vir='cd ~/Projects/freask-virtuals'
 alias cdp-id='cd ~/Projects/freask-app/plugins/Interdeposit'
 alias cdaction='cd ~/Projects/actions'
 alias cdmail='cd ~/Projects/mailing'
-alias cdh-script='cd ~/Projects/hubspot-script'
 
 alias cdapi-doc='cd ~/Projects/api-documentation'
 
 alias start_intra-spa='cd ~/Projects/intranet-spa && npm start'
 
+# Java APP
 alias bfg='java -jar ~/bfg-1.14.0.jar'
 
-# ssh
-alias sshdev='ssh -i ~/.ssh/bh.key bh@192.168.254.116 -p 2298'
-alias sshprod='ssh -i ~/.ssh/bh.key bh@192.168.100.1 -p 2298'
+# SSH
+alias sshdw='ssh dev-web1'
+alias sshpw='ssh prod-web1'
+alias sshdf='ssh dev-front'
+alias sshppf='ssh pprod-front'
 
 # perso
 alias cdperso='cd ~/perso'

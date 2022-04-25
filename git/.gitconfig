@@ -1,0 +1,19 @@
+[core]
+	autocrlf = input
+[user]
+	email = 52321971+Austomos@users.noreply.github.com
+	name = ben
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[alias]
+	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+	diffns = "diff --name-status" # branch or branch1..branch2
+  
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

@@ -6,6 +6,10 @@ export DOTFILES_DIR="${HOME}/.dotfiles"
 # Path to your oh-my-zsh installation.
 export ZSH="${DOTFILES_DIR}/zsh/.oh-my-zsh"
 
+# set DISPLAY variable to the IP automatically assigned to WSL2
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+sudo /etc/init.d/dbus start &> /dev/null
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -72,7 +76,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo)
+plugins=(git ssh-agent sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,3 +107,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source $DOTFILES_DIR/system/.alias
+source $DOTFILES_DIR/git/.git_aliases
