@@ -20,6 +20,8 @@ alias sshpw='ssh prod-web1'
 alias sshdf='ssh dev-front'
 alias sshppf='ssh pprod-front'
 
+alias sshpi='ssh home-pi'
+
 # perso
 alias cdperso='cd ~/perso'
 alias cdmc-kh-bot='cd ~/perso/mychastity.kh-bot-chaster'
