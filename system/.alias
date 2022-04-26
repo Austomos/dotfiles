@@ -30,6 +30,7 @@ alias cdbeck='cd ~/Projects/beck-columns'
 
 # aertec
 alias cdaertec='cd ~/Projects/Aertec'
+alias cdmagec='cd ~/Projects/Aertec/magec'
 
 # others
 alias tabula='java -jar ~/tabula.jar'
