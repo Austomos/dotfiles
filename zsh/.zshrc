@@ -14,7 +14,7 @@ sudo /etc/init.d/dbus start &> /dev/null
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster" # "robbyrussell"
+ZSH_THEME="austo" # "robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -110,9 +110,3 @@ source $ZSH/oh-my-zsh.sh
 source $DOTFILES_DIR/system/.alias
 source $DOTFILES_DIR/git/.git_aliases
 
-# prompt
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-  fi
-}

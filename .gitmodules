@@ -1,0 +1,3 @@
+[submodule "zsh/austo-zsh-theme"]
+	path = zsh/austo-zsh-theme
+	url = git@github_personal:Austomos/austo-zsh-theme.git
