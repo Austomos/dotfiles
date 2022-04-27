@@ -13,7 +13,7 @@ sudo ln -s $DOTFILES_DIR/bin/* /usr/local/bin/
 
 ln -s $DOTFILES_DIR/.profile ~/.profile
 ln -s $DOTFILES_DIR/zsh/.zshrc ~/.zshrc
-ln -s $DOTFILES_DIR/zsh/austo-zsh-theme/austo.zsh-theme $DOTFILES_DIR/zsh/.oh-my-zsh/themes/austo.zsh-theme
+ln -s $DOTFILES_DIR/zsh/austo-zsh-theme/austo.zsh-theme $DOTFILES_DIR/zsh/.oh-my-zsh/custom/themes/austo.zsh-theme
 
 
 # zsh and oh-my-zsh
