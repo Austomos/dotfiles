@@ -29,8 +29,11 @@ alias cdmc-kh-bot='cd ~/perso/mychastity.kh-bot-chaster'
 alias cdmc-app='cd ~/perso/mychastity.app'
 alias cdmc-api='~/perso/mychastity.api'
 alias cdmc-chaster='cd ~/perso/mychastity.chaster-app-php'
+alias cdauth-chaster='cd ~/perso/oauth2-chaster-app'
 alias cdmc-finage='cd ~/perso/mychastity.finage-php'
 alias cdbeck='cd ~/Projects/beck-columns'
+
+alias cddotfile='cd ~/.dotfiles'
 
 # aertec
 alias cdaertec='cd ~/Projects/Aertec'
