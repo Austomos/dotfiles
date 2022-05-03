@@ -16,6 +16,9 @@ sudo /etc/init.d/dbus start &> /dev/null
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="austo" # "robbyrussell"
 
+## set colors for LS_COLORS
+eval `dircolors $DOTFILES_DIR/.dircolors`
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -76,7 +79,13 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent sudo)
+plugins=(
+  git
+  ssh-agent
+  sudo
+  docker
+  zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
 
