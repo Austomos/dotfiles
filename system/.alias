@@ -1,4 +1,6 @@
-# after adding an aliase do: source ~/.bashrc
+# After adding an aliase do: source ~/.bashrc
+
+# Go to dir
 alias cdproject='cd ~/Projects'
 alias cdintra-spa='cd ~/Projects/intranet-spa'
 alias cdf-app='cd ~/Projects/freask-app'
@@ -10,6 +12,7 @@ alias cdapi-id='cd ~/Projects/interdeposit-api'
 
 alias cdapi-doc='cd ~/Projects/api-documentation'
 
+# Serve local server
 alias start_intra-spa='cd ~/Projects/intranet-spa && npm start'
 
 # Java APP
@@ -21,9 +24,11 @@ alias sshpw='ssh prod-web1'
 alias sshdf='ssh dev-front'
 alias sshppf='ssh pprod-front'
 
+alias sshmysqldw='ssh -N -L 3306:localhost:3306 dev-web1'
+
 alias sshpi='ssh home-pi'
 
-# perso
+# Perso
 alias cdperso='cd ~/perso'
 alias cdmc-kh-bot='cd ~/perso/mychastity.kh-bot-chaster'
 alias cdmc-app='cd ~/perso/mychastity.app'
@@ -35,14 +40,18 @@ alias cdbeck='cd ~/Projects/beck-columns'
 
 alias cddotfile='cd ~/.dotfiles'
 
-# aertec
+# Aertec
 alias cdaertec='cd ~/Projects/Aertec'
 alias cdmagec='cd ~/Projects/Aertec/magec'
 
-# others
+# Others
 alias tabula='java -jar ~/tabula.jar'
 alias pdfboxtext='java -jar ~/pdfbox.jar ExtractText'
 alias pdfboximg='java -jar ~/pdfbox.jar ExtractImages'
 
 # Sytem
 alias showip="ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
+
+# Applications
+alias mysql='/usr/local/mysqld/bin/mysql'
+alias mysqldw='mysql -u bh -p -h 127.0.0.1 -P 3306'
