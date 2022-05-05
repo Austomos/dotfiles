@@ -53,5 +53,9 @@ alias pdfboximg='java -jar ~/pdfbox.jar ExtractImages'
 alias showip="ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
 
 # Applications
+# Dirty using MySQL
+alias mysql_start='sudo /usr/local/mysqld/bin/mysqld -u root &' # dirty start
+alias mysql_stop="sudo kill $(ps aux | grep '/usr/local/mysqld/bin/mysqld -u root' | awk '{print $2}')"
 alias mysql='/usr/local/mysqld/bin/mysql'
+
 alias mysqldw='mysql -u bh -p -h 127.0.0.1 -P 3306'
