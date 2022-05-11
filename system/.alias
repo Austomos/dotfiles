@@ -59,3 +59,7 @@ alias mysql_stop="sudo kill $(ps aux | grep '/usr/local/mysqld/bin/mysqld -u roo
 alias mysql='/usr/local/mysqld/bin/mysql'
 
 alias mysqldw='mysql -u bh -p -h 127.0.0.1 -P 3306'
+
+# PHP Global tools
+alias phpcs='php ~/.config/composer/vendor/bin/phpcs'
+alias phpcbf='php ~/.config/composer/vendor/bin/phpcbf'
