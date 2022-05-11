@@ -63,5 +63,8 @@ alias mysqldw='mysql -u bh -p -h 127.0.0.1 -P 3306'
 # PHP Global tools
 alias phpcs-g='php ~/.config/composer/vendor/bin/phpcs'
 alias phpcbf-g='php ~/.config/composer/vendor/bin/phpcbf'
+alias phpunit-g='php ~/.config/composer/vendor/bin/phpunit'
+# PHP Local tools
 alias phpcs='php ./vendor/bin/phpcs'
 alias phpcbf='php ./vendor/bin/phpcbf'
+alias phpunit='php ./vendor/bin/phpunit'
