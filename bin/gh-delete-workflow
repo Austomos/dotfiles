@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+gh workflow list # Pick-up the workflow ID for which you want to delete all runs
+echo 'Workflow ID:'
+read WORKFLOW_ID
+
+if [ -z ${WORKFLOW_ID} ]; then
+	echo "Workflow ID missing";
+	exit;
+fi
+
+gh run list -L 10 -w $WORKFLOW_ID
+
+echo 'Number of worflow run to delete'
+read NUMBER_RUNS
+
+if [ -z ${NUMBER_RUNS} ]; then
+	echo "Number of workflow run to delete missing"
+	exit;
+fi
+
+REPO_INFO=$(gh repo view --json name,owner)
+REPO_FULL_NAME="$(echo $REPO_INFO | jq '.owner.login' -r)/$(echo $REPO_INFO | jq '.name' -r)"
+
+gh api -X GET "/repos/$REPO_FULL_NAME/actions/workflows/$WORKFLOW_ID/runs?per_page=$NUMBER_RUNS" | jq '.workflow_runs[] | .id' -r | xargs -t -I{} gh api --silent -X DELETE /repos/$REPO_FULL_NAME/actions/runs/{}
