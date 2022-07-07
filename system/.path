@@ -1,0 +1,13 @@
+# set PATH if textlive 2022 exists
+if [ -d "/usr/local/texlive/2022/bin/x86_64-linux" ] ; then
+    PATH="/usr/local/texlive/2022/bin/x86_64-linux:$PATH"
+fi
+
+# set PATH if windows JetBrains shell exists
+if [ -d "/mnt/c/Users/bh/JetBrains" ] ; then
+    PATH="/mnt/c/Users/bh/JetBrains:$PATH"
+fi 
+
+export WIN_JETBRAINS_CMD=/mnt/c/Users/bh/JetBrains
+export WIN_WSL_HOME=//wsl$/Debian/home/bh
+
