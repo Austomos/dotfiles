@@ -1,0 +1,10 @@
+#!/bin/sh
+cd /mnt/c/Users/bh/JetBrains
+cmd.exe /c phpstorm $WIN_WSL_HOME/Projects/freask-app &
+sleep 15
+cmd.exe /c phpstorm $WIN_WSL_HOME/Projects/freask-app &
+sleep 5
+#wwt sp -V
+cd ~/Projects/freask-app
+#cmd.exe /c sp -V
+
