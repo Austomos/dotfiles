@@ -1,10 +1,13 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export DOTFILES_DIR="${HOME}/.dotfiles"
 
 # Path to your oh-my-zsh installation.
 export ZSH="${DOTFILES_DIR}/zsh/.oh-my-zsh"
+
+# WSL Win Home path
+export WIN_USER_HOME="/mnt/c/Users/bh"
 
 # set DISPLAY variable to the IP automatically assigned to WSL2
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
@@ -84,6 +87,7 @@ plugins=(
   ssh-agent
   sudo
   docker
+  docker-compose
   zsh-syntax-highlighting
 )
 
@@ -118,5 +122,6 @@ source $ZSH/oh-my-zsh.sh
 # source external config
 source $DOTFILES_DIR/zsh/.zshenv
 source $DOTFILES_DIR/system/.alias
+source $DOTFILES_DIR/system/.path
 source $DOTFILES_DIR/git/.git_aliases
 

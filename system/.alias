@@ -9,11 +9,15 @@ alias cdp-id='cd ~/Projects/freask-app/plugins/Interdeposit'
 alias cdaction='cd ~/Projects/actions'
 alias cdmail='cd ~/Projects/mailing'
 alias cdapi-id='cd ~/Projects/interdeposit-api'
+alias cdf-serv='cd ~/Projects/freask-server'
 
 alias cdapi-doc='cd ~/Projects/api-documentation'
 
 # Serve local server
 alias start_intra-spa='cd ~/Projects/intranet-spa && npm start'
+
+# Git
+alias ghwda='~/.dotfiles/bin/gh-delete-workflow'
 
 # Java APP
 alias bfg='java -jar ~/bfg-1.14.0.jar'
@@ -49,8 +53,11 @@ alias tabula='java -jar ~/tabula.jar'
 alias pdfboxtext='java -jar ~/pdfbox.jar ExtractText'
 alias pdfboximg='java -jar ~/pdfbox.jar ExtractImages'
 
-# Sytem
-alias showip="ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
+# Sytem WSL
+alias my-ip="ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
+alias wsl-ip='ipconfig.exe | grep IPv4 | cut -d: -f2'
+alias wcmd='cmd.exe /c'
+alias wwt='cmd.exe /c "wt.exe"'
 
 # Applications
 # Dirty using MySQL
@@ -61,10 +68,12 @@ alias mysql='/usr/local/mysqld/bin/mysql'
 alias mysqldw='mysql -u bh -p -h 127.0.0.1 -P 3306'
 
 # PHP Global tools
-alias phpcs-g='php ~/.config/composer/vendor/bin/phpcs'
-alias phpcbf-g='php ~/.config/composer/vendor/bin/phpcbf'
-alias phpunit-g='php ~/.config/composer/vendor/bin/phpunit'
-# PHP Local tools
+alias phpcsg='php ~/.config/composer/vendor/bin/phpcs'
 alias phpcs='php ./vendor/bin/phpcs'
+
+alias phpcbfg='php ~/.config/composer/vendor/bin/phpcbf'
 alias phpcbf='php ./vendor/bin/phpcbf'
-alias phpunit='php ./vendor/bin/phpunit'
+
+alias phpunitg='php ~/.config/composer/vendor/bin/phpunit'
+
+# JetBrains
