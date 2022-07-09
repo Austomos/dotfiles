@@ -1,0 +1,103 @@
+#!/bin/zsh
+############################################################
+# Initialize                                               #
+############################################################
+# Set the JIRA project key, which prefix your ticket number
+# Find it in the JIRA project settings
+# Or in the JIRA URL, e.g. https://{COMPANY}.atlassian.net/browse/{JIRA_PROJECT_KEY}
+JIRA_PROJECT_KEY="APP"
+
+# Apply colors
+color-help() {
+  echo -e "\033[0;34m$1\033[0m"
+}
+color-error() {
+  echo -e "\033[1;31m$1\033[0m"
+}
+color-warning() {
+  echo -e "\033[0;33m$1\033[0m"
+}
+color-success() {
+  echo -e "\033[0;32m$1\033[0m"
+}
+
+# Help
+Help()
+{
+   # Display Help
+   echo "$(color-help "Help") - Perform git commit commitizen format with Jira ticket"
+   echo "Usage: git-commit-cz-jira-ticket [cz-action] [commit-message]"
+   echo
+   echo "Example:"
+   echo "Your jira project key is 'ABC', then your current branch is like 'ABC-123-my-new-feature'" 
+   echo
+   echo "Commit with: git-commit-cz-jira-ticket feat \"add new feature\""
+   echo "performs a commit with the commitizen following format:"
+   echo "feat(abc-123): add my new feature"
+   echo
+   echo "Options:"
+   echo "-k    Set the jira project key."
+   echo "-h    Show help message."
+   echo
+   echo "More commitizen information here: https://www.conventionalcommits.org"
+}
+
+# Get the options
+while getopts ":h:k:" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+      k) # set the JIRA project key
+         sed -i -E "s/(JIRA_PROJECT_KEY=\").+?(\")/\1$OPTARG\2/" $0
+         JIRA_PROJECT_KEY=$OPTARG
+         echo "$(color-success "Success!") Jira project key set to: $JIRA_PROJECT_KEY"
+         [[ $# -eq 2 ]] && exit
+         ;;
+      \?) # Invalid option
+         echo $(color-error "Error: Invalid option")
+         echo
+         Help
+         exit;;
+   esac
+done
+
+# Check if the JIRA project key is set
+if [ -z "$JIRA_PROJECT_KEY" ]; then
+   echo $(color-warning "Jira project key is not set. Please set it in the script.")
+   echo
+   echo "To set the key, you can use the following command:"
+   echo "git-commit-cz-jira-ticket -k <JIRA_PROJECT_KEY>"
+   echo
+   echo "More help available with the -h option."
+   exit 0
+fi
+
+############################################################
+############################################################
+# Main program                                             #
+############################################################
+############################################################
+
+# Set variables
+TICKET=$(git symbolic-ref HEAD | grep -oP "${JIRA_PROJECT_KEY}-[0-9]*" | tr '[:upper:]' '[:lower:]')
+TASK=${@:$OPTIND:1}
+MESSAGE=${@:$OPTIND+1:1}
+
+if [[ -z "$TASK" ]] then
+   echo $(color-error "CZ Action missing")
+   echo "Example of commitizen actions: feat, fix, docs, style, refactor, test, chore"
+   echo
+   Help
+   exit 0
+fi
+
+if [[ -z "$MESSAGE" ]] then
+   echo $(color-error "commit message missing")
+   echo
+   Help
+   exit 0
+fi
+
+# Git command to perform the commit
+git commit -m "${TASK}(${TICKET}): ${MESSAGE}"
