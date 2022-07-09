@@ -17,8 +17,8 @@ alias cdapi-doc='cd ~/Projects/api-documentation'
 alias start_intra-spa='cd ~/Projects/intranet-spa && npm start'
 
 # Git
-alias ghwda='~/.dotfiles/bin/gh-delete-workflow'
-
+alias ghwda='$DOTFILES_DIR/bin/gh-delete-workflow'
+alias gcmczt='$DOTFILES_DIR/bin/git-commit-cz-jira-ticket'
 # Java APP
 alias bfg='java -jar ~/bfg-1.14.0.jar'
 
@@ -42,7 +42,7 @@ alias cdauth-chaster='cd ~/perso/mychastity.oauth2-chaster-app'
 alias cdmc-finage='cd ~/perso/mychastity.finage-php'
 alias cdbeck='cd ~/Projects/beck-columns'
 
-alias cddotfile='cd ~/.dotfiles'
+alias cddotfile='cd $DOTFILES_DIR'
 
 # Aertec
 alias cdaertec='cd ~/Projects/Aertec'
