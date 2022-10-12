@@ -125,3 +125,4 @@ source $DOTFILES_DIR/system/.alias
 source $DOTFILES_DIR/system/.path
 source $DOTFILES_DIR/git/.git_aliases
 
+export GPG_TTY=$(tty)

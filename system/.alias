@@ -2,16 +2,17 @@
 
 # Go to dir
 alias cdproject='cd ~/Projects'
-alias cdintra-spa='cd ~/Projects/intranet-spa'
+alias cdintra-spa='cd ~/Projects/intraneut-spa'
 alias cdf-app='cd ~/Projects/freask-app'
-alias cdf-vir='cd ~/Projects/freask-virtuals'
-alias cdp-id='cd ~/Projects/freask-app/plugins/Interdeposit'
+alias cdp-id='cd ~/Projects/freask-app/app/plugins/Interdeposit'
 alias cdaction='cd ~/Projects/actions'
 alias cdmail='cd ~/Projects/mailing'
 alias cdapi-id='cd ~/Projects/interdeposit-api'
 alias cdf-serv='cd ~/Projects/freask-server'
 
 alias cdapi-doc='cd ~/Projects/api-documentation'
+
+alias cdscratch='cd /home/bh/scratch_files/scratches'
 
 # Serve local server
 alias start_intra-spa='cd ~/Projects/intranet-spa && npm start'
@@ -41,6 +42,8 @@ alias cdmc-chaster='cd ~/perso/mychastity.chaster-app-php'
 alias cdauth-chaster='cd ~/perso/mychastity.oauth2-chaster-app'
 alias cdmc-finage='cd ~/perso/mychastity.finage-php'
 alias cdbeck='cd ~/Projects/beck-columns'
+alias cdwfm='cd ~/perso/write-for-me-php'
+
 
 alias cddotfile='cd $DOTFILES_DIR'
 
@@ -63,7 +66,7 @@ alias wwt='cmd.exe /c "wt.exe"'
 # Dirty using MySQL
 alias mysql_start='sudo /usr/local/mysqld/bin/mysqld -u root &' # dirty start
 alias mysql_stop="sudo kill $(ps aux | grep '/usr/local/mysqld/bin/mysqld -u root' | awk '{print $2}')"
-alias mysql='/usr/local/mysqld/bin/mysql'
+#alias mysql='/usr/local/mysqld/bin/mysql'
 
 alias mysqldw='mysql -u bh -p -h 127.0.0.1 -P 3306'
 

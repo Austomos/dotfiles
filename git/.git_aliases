@@ -1,2 +1,7 @@
 # Custom git aliases
 alias gdns='git diff --name-status' # add branch or branch1..branch2
+alias grmDf='f(){
+	git filter-branch --force --index-filter \
+	'git rm --cached --ignore-unmatch $1' \
+	--prune-empty --tag-name-filter cat -- --all
+}; f'

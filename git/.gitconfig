@@ -2,7 +2,8 @@
 	autocrlf = input
 [user]
 	email = 52321971+Austomos@users.noreply.github.com
-	name = ben
+	name = Ben Hyr
+	signingkey = D8BAA05213401156
 [pull]
 	rebase = true
 [init]
@@ -17,3 +18,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[gpg]
+	program = gpg
