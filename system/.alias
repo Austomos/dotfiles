@@ -1,21 +1,10 @@
 # After adding an aliase do: source ~/.bashrc
 
 # Go to dir
-alias cdproject='cd ~/Projects'
-alias cdintra-spa='cd ~/Projects/intraneut-spa'
 alias cdf-app='cd ~/Projects/freask-app'
 alias cdp-id='cd ~/Projects/freask-app/app/plugins/Interdeposit'
-alias cdaction='cd ~/Projects/actions'
-alias cdmail='cd ~/Projects/mailing'
-alias cdapi-id='cd ~/Projects/interdeposit-api'
-alias cdf-serv='cd ~/Projects/freask-server'
-
-alias cdapi-doc='cd ~/Projects/api-documentation'
 
 alias cdscratch='cd /home/bh/scratch_files/scratches'
-
-# Serve local server
-alias start_intra-spa='cd ~/Projects/intranet-spa && npm start'
 
 # Git
 alias ghwda='$DOTFILES_DIR/bin/gh-delete-workflow'
@@ -41,15 +30,9 @@ alias cdmc-api='~/perso/mychastity.api'
 alias cdmc-chaster='cd ~/perso/mychastity.chaster-app-php'
 alias cdauth-chaster='cd ~/perso/mychastity.oauth2-chaster-app'
 alias cdmc-finage='cd ~/perso/mychastity.finage-php'
-alias cdbeck='cd ~/Projects/beck-columns'
 alias cdwfm='cd ~/perso/write-for-me-php'
 
-
 alias cddotfile='cd $DOTFILES_DIR'
-
-# Aertec
-alias cdaertec='cd ~/Projects/Aertec'
-alias cdmagec='cd ~/Projects/Aertec/magec'
 
 # Others
 alias tabula='java -jar ~/tabula.jar'
@@ -62,21 +45,3 @@ alias wsl-ip='ipconfig.exe | grep IPv4 | cut -d: -f2'
 alias wcmd='cmd.exe /c'
 alias wwt='cmd.exe /c "wt.exe"'
 
-# Applications
-# Dirty using MySQL
-alias mysql_start='sudo /usr/local/mysqld/bin/mysqld -u root &' # dirty start
-alias mysql_stop="sudo kill $(ps aux | grep '/usr/local/mysqld/bin/mysqld -u root' | awk '{print $2}')"
-#alias mysql='/usr/local/mysqld/bin/mysql'
-
-alias mysqldw='mysql -u bh -p -h 127.0.0.1 -P 3306'
-
-# PHP Global tools
-alias phpcsg='php ~/.config/composer/vendor/bin/phpcs'
-alias phpcs='php ./vendor/bin/phpcs'
-
-alias phpcbfg='php ~/.config/composer/vendor/bin/phpcbf'
-alias phpcbf='php ./vendor/bin/phpcbf'
-
-alias phpunitg='php ~/.config/composer/vendor/bin/phpunit'
-
-# JetBrains
